@@ -12,6 +12,9 @@ In your terminal run the command:
 git clone https://github.com/diferpaho/spotify.git
 ````
 
+```` 
+cd spotify
+````
 
 ## Available Scripts
 
