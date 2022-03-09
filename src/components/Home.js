@@ -1,8 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from "axios";
 
 function Home() {
-  // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
+  
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    Axios({
+      url: "https://api.audioboom.com/channels/recommended",
+    })
+      .then((response) => {
+        console.log(response.data.body);
+        setList(response.data.body);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [setList]);
 
   return (
     <div id="col-de" className="col-7 col-md-8 col-lg-9 col-xl-10 bg-secondary px-5" >
@@ -25,60 +39,30 @@ function Home() {
       </nav>
       <div className="row mb-5">
         <div className="col-12 mb-3">
-          <h3 className="text-white"
-          >Podcasts recomendados:</h3>
+          <h3 className="text-white">Podcasts recomendados:</h3>
         </div>
-
-        <div className="col-12 col-md-6 col-lg-3">
-          <a href="#" className="" id="item" >
+        
+        {list.map((item) => (
+          
+        <div key={item.id} className="col-12 col-md-6 col-lg-3">
+          <a href={"podcast/"+item.id} className="" id="item" >
             <div className="card mb-4 bg-dark box-hover" >
-              <img src="https://previews.123rf.com/images/butenkow/butenkow1711/butenkow171100744/90745621-vector-logo-music.jpg"
+              <img src={item.urls.logo_image.original}
                 className="card-img-top rounded-circle p-3" alt="..." />
               <div className="card-body">
-                <p className="card-text text-white">Shakira</p>
-                <p className="card-text text-secondary">Artistat</p>
+                <p id="card-podcast-title" className="card-text text-white">{item.title}</p>
+                <p className="card-text text-secondary">podcast</p>
               </div>
             </div>
           </a>
         </div>
+        ))}
 
-        <div className="col-12 col-md-6 col-lg-3">
-          <div className="card mb-3 bg-dark" >
-            <img src="https://previews.123rf.com/images/butenkow/butenkow1711/butenkow171100744/90745621-vector-logo-music.jpg"
-              className="card-img-top rounded-circle p-3" alt="..." />
-            <div className="card-body">
-              <p className="card-text text-white">Shakira</p>
-              <p className="card-text text-secondary">Artistat</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-12 col-md-6 col-lg-3">
-          <div className="card mb-3 bg-dark" >
-            <img src="https://previews.123rf.com/images/butenkow/butenkow1711/butenkow171100744/90745621-vector-logo-music.jpg"
-              className="card-img-top rounded-circle p-3" alt="..." />
-            <div className="card-body">
-              <p className="card-text text-white">Shakira</p>
-              <p className="card-text text-secondary">Artistat</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-12 col-md-6 col-lg-3">
-          <div className="card mb-3 bg-dark" >
-            <img src="https://previews.123rf.com/images/butenkow/butenkow1711/butenkow171100744/90745621-vector-logo-music.jpg"
-              className="card-img-top rounded-circle p-3" alt="..." />
-            <div className="card-body">
-              <p className="card-text text-white">Shakira</p>
-              <p className="card-text text-secondary">Artistat</p>
-            </div>
-          </div>
-        </div>
-     
         
-
       </div>
 
       <div className="col-12 mb-3">
-        <h3 className="text-white">© 2022 </h3>
+        <h3 className="text-secondary">© 2022 </h3>
       </div>
     </div>
 
