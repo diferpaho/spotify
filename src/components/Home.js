@@ -21,7 +21,7 @@ function Home() {
   return (
     <div id="col-de" className="col-7 col-md-8 col-lg-9 col-xl-10 bg-secondary px-5" >
 
-      <nav className="navbar navbar-secondary bg-secondary ">
+      <nav className="navbar navbar-secondary ">
         <div className="container-fluid">
           <a className="navbar-brand"></a>
           <form className="d-flex">
@@ -62,7 +62,7 @@ function Home() {
       </div>
 
       <div className="col-12 mb-3">
-        <h3 className="text-secondary">© 2022 </h3>
+        <h3 className="text-secondary">. </h3>
       </div>
     </div>
 

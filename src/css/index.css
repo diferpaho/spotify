@@ -9,6 +9,8 @@ body {
 }
 #col-de{
   height:100vmin; overflow-y: scroll;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(103,101,101,1) 100%);    
 }
 #col-iz{
   background-color: black;
@@ -38,8 +40,13 @@ body {
 }
 
 .box-hover:hover {
-transform: scale(1.1);
+transform: scale(1.05);
   box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.box-table:hover {
+  
+    box-shadow: 1px 12px 16px rgba(0, 0, 0, 0.8);
 }
 
 .table-borderless > tbody > tr > td,
